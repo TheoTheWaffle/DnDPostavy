@@ -1,0 +1,156 @@
+:root {
+  --ink: #f5ead2;
+  --muted: #cdbf9c;
+  --bg: #14100d;
+  --panel: #241b15;
+  --panel-2: #302418;
+  --line: #6e5531;
+  --gold: #d5a84d;
+  --red: #8f332b;
+  --green: #42664f;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(143, 51, 43, 0.26), transparent 34rem),
+    linear-gradient(135deg, rgba(213, 168, 77, 0.08) 0 1px, transparent 1px 12px),
+    var(--bg);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: rgba(20, 16, 13, 0.92);
+  border-bottom: 1px solid rgba(213, 168, 77, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--gold);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.top-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.top-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.home-hero {
+  min-height: 52vh;
+  display: grid;
+  align-items: end;
+  padding: clamp(4rem, 10vw, 8rem) clamp(1rem, 5vw, 5rem) 3rem;
+  border-bottom: 1px solid rgba(213, 168, 77, 0.22);
+  background:
+    linear-gradient(90deg, rgba(20, 16, 13, 0.95), rgba(20, 16, 13, 0.62)),
+    url("../assets/characters/hero-table.svg") center / cover;
+}
+
+.hero-copy {
+  max-width: 760px;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.7rem, 7vw, 6rem);
+  line-height: 0.95;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.55rem, 3vw, 2.3rem);
+}
+
+h3 {
+  margin: 0 0 0.4rem;
+}
+
+.content-band {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.section-heading {
+  margin-bottom: 1.4rem;
+}
+
+.button,
+button {
+  border: 1px solid rgba(213, 168, 77, 0.68);
+  color: #1b130d;
+  background: linear-gradient(#efc86a, #bb8334);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.info-panel,
+.character-card,
+.attack-card,
+.resource-card,
+.feature-card,
+.next-card {
+  background:
+    linear-gradient(180deg, rgba(255, 244, 213, 0.055), rgba(0, 0, 0, 0.1)),
+    var(--panel);
+  border: 1px solid rgba(213, 168, 77, 0.25);
+  box-shadow: 0 16px 30px var(--shadow);
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    position: static;
+  }
+}

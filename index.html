@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DnD Postavy</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/characters.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./index.html">DnD Postavy</a>
+    <nav class="top-nav" aria-label="Hlavní navigace">
+      <a href="./characters/">Postavy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="home-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Kronika dobrodruhů</p>
+        <h1>DnD Postavy</h1>
+        <p>
+          Přehledná fantasy databáze osobních D&D 5e postav: statistiky,
+          schopnosti, boj, výbava, příběh a budoucí postup po levelech.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-band">
+      <div class="section-heading">
+        <p class="eyebrow">Výběr postavy</p>
+        <h2>Aktivní hrdinové</h2>
+      </div>
+      <div id="character-grid" class="character-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="./data/classes/barbarian.js"></script>
+  <script src="./data/classes/monk.js"></script>
+  <script src="./data/classes/warlock.js"></script>
+  <script src="./data/subclasses/drunken-master.js"></script>
+  <script src="./data/subclasses/fathomless.js"></script>
+  <script src="./data/characters.js"></script>
+  <script src="./js/progression.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

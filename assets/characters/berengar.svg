@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Berengar portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#4b241d"/>
+      <stop offset="1" stop-color="#15100d"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <circle cx="400" cy="255" r="135" fill="#b9844a"/>
+  <path d="M245 250c50-120 260-120 310 0-40-48-98-72-155-72s-115 24-155 72z" fill="#5a3422"/>
+  <path d="M260 392c70 120 210 120 280 0 16 132 96 178 126 360H134c30-182 110-228 126-360z" fill="#6f3328"/>
+  <path d="M230 500h340l62 310H168z" fill="#2a2118"/>
+  <path d="M216 672h368v54H216z" fill="#c89b4d"/>
+  <text x="400" y="910" text-anchor="middle" fill="#f4dfb8" font-size="54" font-family="Georgia">BERENGAR</text>
+</svg>

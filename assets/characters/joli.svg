@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Joli portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#143a3d"/>
+      <stop offset="1" stop-color="#120f17"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <path d="M120 730c140-70 130-190 280-190s140 120 280 190v150H120z" fill="#1f2f2e"/>
+  <circle cx="400" cy="255" r="124" fill="#b98965"/>
+  <path d="M292 248c12-110 210-156 250 10-70-46-158-44-250-10z" fill="#151019"/>
+  <path d="M310 390h180l70 300H240z" fill="#2b5f62"/>
+  <path d="M210 612c80 12 118 56 126 132M590 612c-80 12-118 56-126 132" fill="none" stroke="#62a6a1" stroke-width="34" stroke-linecap="round"/>
+  <text x="400" y="910" text-anchor="middle" fill="#f4dfb8" font-size="64" font-family="Georgia">JOLI</text>
+</svg>
