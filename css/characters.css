@@ -334,13 +334,21 @@ dd {
 
 .skill-row {
   display: grid;
-  grid-template-columns: 18px 1fr 44px 48px;
+  grid-template-columns: 14px minmax(0, 1fr) 36px 32px;
   align-items: center;
   gap: 0.45rem;
   padding: 0.55rem 0.65rem;
   background: rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(213, 168, 77, 0.16);
   border-radius: 6px;
+}
+
+.skill-row > * {
+  min-width: 0;
+}
+
+.skill-row span:nth-child(2) {
+  overflow-wrap: anywhere;
 }
 
 .skill-row strong {
