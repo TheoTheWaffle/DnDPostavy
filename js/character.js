@@ -61,6 +61,39 @@ function renderSpellcasting(spellcasting) {
   `;
 }
 
+function renderRollControl(feature) {
+  if (!feature.wildSurgeTable) return "";
+  return `
+    <div class="dice-roller" data-roll-die="8">
+      <button class="roll-button" type="button">Hodit d8</button>
+      <output class="roll-result" aria-live="polite">-</output>
+    </div>
+  `;
+}
+
+function renderWildSurgeTable(feature) {
+  if (!feature.wildSurgeTable) return "";
+  return `
+    <div class="wild-surge-table">
+      <h4>Wild Magic d8</h4>
+      <ol>${feature.wildSurgeTable.map((entry) => `<li><strong>${entry.roll}</strong><span>${entry.effect}</span></li>`).join("")}</ol>
+    </div>
+  `;
+}
+
+function renderCombatWildSurge(character) {
+  const feature = character.features?.find((item) => item.wildSurgeTable);
+  if (!feature) return "";
+  return `
+    <article class="info-panel combat-surge-panel">
+      <h2>Wild Surge</h2>
+      <p>${feature.shortDescription} Použij hod d8 při vstupu do Rage.</p>
+      ${renderRollControl(feature)}
+      ${renderWildSurgeTable(feature)}
+    </article>
+  `;
+}
+
 function renderFeatures(features) {
   return features.map((feature) => `
     <details class="feature-card">
@@ -74,9 +107,31 @@ function renderFeatures(features) {
       ${(feature.uses || feature.recharge) ? `<p class="feature-meta">${feature.uses ? `Uses: ${feature.uses}` : ""}${feature.uses && feature.recharge ? " · " : ""}${feature.recharge ? `Recharge: ${feature.recharge}` : ""}</p>` : ""}
       <p>${feature.shortDescription}</p>
       <ul>${renderList(feature.details)}</ul>
+      ${renderRollControl(feature)}
+      ${renderWildSurgeTable(feature)}
       <div class="tags">${(feature.tags || []).map((tag) => `<span>${tag}</span>`).join("")}</div>
     </details>
   `).join("");
+}
+
+function rollDie(sides) {
+  const maxUint32 = 0x100000000;
+  const limit = maxUint32 - (maxUint32 % sides);
+  const values = new Uint32Array(1);
+  do {
+    crypto.getRandomValues(values);
+  } while (values[0] >= limit);
+  return (values[0] % sides) + 1;
+}
+
+function bindDiceRollers() {
+  document.querySelectorAll(".dice-roller").forEach((roller) => {
+    const button = roller.querySelector(".roll-button");
+    const result = roller.querySelector(".roll-result");
+    button.addEventListener("click", () => {
+      result.value = rollDie(Number(roller.dataset.rollDie));
+    });
+  });
 }
 
 function renderSkills(character) {
@@ -226,6 +281,7 @@ function renderCharacter(character) {
       <h2>Zdroje</h2>
       <div class="resource-grid">${renderResources(character.resources || [])}</div>
       ${renderSpellcasting(character.spellcasting)}
+      ${renderCombatWildSurge(character)}
     </section>
 
     <section id="tab-2" class="tab-panel">
@@ -251,6 +307,7 @@ function renderCharacter(character) {
     </section>
   `;
   bindTabs(character);
+  bindDiceRollers();
 }
 
 renderCharacter(character);

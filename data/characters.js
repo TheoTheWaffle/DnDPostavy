@@ -44,10 +44,10 @@ window.characters = {
         source: "Barbarian 1",
         levelUnlocked: 1,
         actionType: "Bonus Action",
-        uses: "2 / Long Rest",
+        uses: "3 / Long Rest",
         recharge: "Long Rest",
         shortDescription: "Vstoupíš do bojového vzteku.",
-        details: ["Výhoda na Strength checks a Strength saves.", "+2 damage k melee útokům používajícím Strength.", "Resistance proti bludgeoning, piercing a slashing damage.", "Během Rage nemůžeš kouzlit ani držet koncentraci."],
+        details: ["Rage aktivuješ jako bonus action, pokud nejsi v heavy armor.", "Výhoda na Strength checks a Strength saves.", "+2 damage k melee útokům používajícím Strength.", "Resistance proti bludgeoning, piercing a slashing damage.", "Trvá 1 minutu; skončí dřív, pokud upadneš do bezvědomí nebo v tahu nezaútočíš na nepřítele a neutrpíš damage.", "Během Rage nemůžeš kouzlit ani držet koncentraci."],
         tags: ["combat", "resource"]
       },
       {
@@ -103,7 +103,17 @@ window.characters = {
         recharge: null,
         shortDescription: "Při vstupu do Rage vyvoláš náhodný magický efekt.",
         details: ["Při vstupu do Rage hodíš na tabulce Wild Magic. Pokud efekt vyžaduje záchranný hod, DC je 14."],
-        tags: ["subclass", "rage", "magic"]
+        tags: ["subclass", "rage", "magic"],
+        wildSurgeTable: [
+          { roll: 1, effect: "Bytosti podle tvé volby do 30 ft hází Constitution save; při neúspěchu utrpí 1d12 necrotic damage. Ty získáš 1d12 temporary HP." },
+          { roll: 2, effect: "Teleportuj se až 30 ft na volné místo, které vidíš. Do konce Rage můžeš tento teleport opakovat jako bonus action." },
+          { roll: 3, effect: "U vybrané bytosti poblíž se objeví magický duch, který na konci tahu vybuchne a může způsobit 1d6 force damage okolním tvorům." },
+          { roll: 4, effect: "Jedna držená zbraň začne působit force damage a získá light a thrown vlastnosti. Po odhození se na konci tahu vrátí do ruky." },
+          { roll: 5, effect: "Když tě někdo během Rage zasáhne, utrpí 1d6 force damage jako magickou odvetu." },
+          { roll: 6, effect: "Získáš +1 AC a spojenci do 10 ft od tebe získají stejný bonus." },
+          { roll: 7, effect: "Dočasně vyrostou květiny a liány; prostor do 15 ft kolem tebe je pro nepřátele difficult terrain." },
+          { roll: 8, effect: "Z hrudi vyšlehne paprsek. Vybraný tvor do 30 ft hází Constitution save; při neúspěchu utrpí 1d6 radiant damage a je krátce blinded." }
+        ]
       }
     ],
     story: "Já jsem Berengar, pro přátele Bery. Já a má žena jsme se našli kdysi, když jsem já sám bloudil v okolí univerzity a potkal ji. Já sám jsem tam byl, protože jsem potřeboval najít ideální materiál na vyrábění alkoholu. Jelikož jsem sám z okolí kopců, jsem zvyklý na žití mezi hobity, lidmi a i elfy. Samotnou hospodu už máme v rodině."
