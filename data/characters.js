@@ -5,26 +5,26 @@ window.characters = {
     race: "Hill Dwarf",
     background: "Guild Merchant",
     alignment: "Good",
-    portrait: "../assets/characters/Bery2.png",
-    cardPortrait: "./assets/characters/Bery2.png",
+    portrait: "../assets/characters/Berengar.png",
+    cardPortrait: "./assets/characters/Berengar.png",
     description: "Trpasličí hostinský, který většinu problémů řeší velkým kladivem a ještě větší tvrdohlavostí.",
     flavorQuote: "Trpasličí taverník, který dává přednost řešení problémů palicí.",
-    classes: [{ classKey: "barbarian", className: "Barbarian", level: 2, subclass: null }],
+    classes: [{ classKey: "barbarian", className: "Barbarian", level: 3, subclass: "wildMagic" }],
     stats: { strength: 14, dexterity: 14, constitution: 19, intelligence: 9, wisdom: 10, charisma: 12 },
-    hp: 33,
+    hp: 49,
     ac: 16,
     initiative: 2,
     speed: "25 ft",
     proficiencyBonus: 2,
     languages: ["Common", "Dwarvish", "Elvish"],
     proficiencies: ["Brewer's Tools", "Light Armor", "Medium Armor", "Shields", "Simple Weapons", "Martial Weapons"],
-    skillProficiencies: ["athletics", "insight", "perception", "persuasion"],
+    skillProficiencies: ["athletics", "insight", "intimidation", "persuasion"],
     attacks: [
       { name: "Maul", ability: "strength", proficient: true, magicBonus: 0, damageDice: "2d6", damageType: "bludgeoning", range: "Melee", notes: "Heavy, two-handed" },
-      { name: "Longbow", ability: "dexterity", proficient: true, magicBonus: 0, damageDice: "1d8", damageType: "piercing", range: "150/600 ft", notes: "Ammunition, heavy, two-handed" }
+      { name: "Handaxe", ability: "strength", proficient: true, magicBonus: 0, damageDice: "1d6", damageType: "slashing", range: "Melee or 20/60 ft", notes: "Light, thrown" }
     ],
     resources: [
-      { name: "Rage", current: 2, maximum: 2, recharge: "Long Rest", note: "+2 damage" }
+      { name: "Rage", current: 3, maximum: 3, recharge: "Long Rest", note: "+2 damage" }
     ],
     equipment: ["Maul", "Longbow", "Brewer's Tools", "Traveler's clothes", "Merchant gear"],
     features: [
@@ -82,6 +82,28 @@ window.characters = {
         shortDescription: "Útočíš bez ohledu na vlastní krytí.",
         details: ["Při prvním Strength melee útoku ve svém tahu můžeš získat advantage.", "Útoky proti tobě mají advantage do začátku tvého dalšího tahu."],
         tags: ["combat", "risk"]
+      },
+      {
+        name: "Magic Awareness",
+        source: "Path of Wild Magic 3",
+        levelUnlocked: 3,
+        actionType: "Action",
+        uses: "3 / Long Rest",
+        recharge: "Long Rest",
+        shortDescription: "Vnímáš soustředěnou magii v okolí.",
+        details: ["Do konce svého dalšího tahu víš o každém kouzlu nebo magickém předmětu do 60 ft, který není za úplným krytem, a při zaznamenání kouzla znáš jeho školu."],
+        tags: ["subclass", "magic"]
+      },
+      {
+        name: "Wild Surge",
+        source: "Path of Wild Magic 3",
+        levelUnlocked: 3,
+        actionType: "Rage",
+        uses: null,
+        recharge: null,
+        shortDescription: "Při vstupu do Rage vyvoláš náhodný magický efekt.",
+        details: ["Při vstupu do Rage hodíš na tabulce Wild Magic. Pokud efekt vyžaduje záchranný hod, DC je 14."],
+        tags: ["subclass", "rage", "magic"]
       }
     ],
     story: "Já jsem Berengar, pro přátele Bery. Já a má žena jsme se našli kdysi, když jsem já sám bloudil v okolí univerzity a potkal ji. Já sám jsem tam byl, protože jsem potřeboval najít ideální materiál na vyrábění alkoholu. Jelikož jsem sám z okolí kopců, jsem zvyklý na žití mezi hobity, lidmi a i elfy. Samotnou hospodu už máme v rodině."
