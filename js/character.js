@@ -44,6 +44,28 @@ function renderResources(resources) {
   `).join("");
 }
 
+function renderSavingThrows(character) {
+  return (character.savingThrows || []).map((save) => `
+    <div class="save-row ${save.proficient ? "proficient" : ""}">
+      <span>${save.name}</span>
+      <strong>${signed(save.bonus)}</strong>
+      <em>${save.proficient ? "Proficient" : "Not proficient"}</em>
+    </div>
+  `).join("");
+}
+
+function renderMagicalItems(character) {
+  if (!character.magicalItems?.length) return "";
+  return `
+    <article class="info-panel magical-items-panel">
+      <h2>Magical Items</h2>
+      <div class="magic-item-list">
+        ${character.magicalItems.map((item) => `<div class="magic-item"><h3>${item.name}</h3><p>${item.effect}</p></div>`).join("")}
+      </div>
+    </article>
+  `;
+}
+
 function spellSlotLevel(character, spellcasting) {
   const classItem = character.classes?.find((item) => item.className === spellcasting.className);
   return classItem ? getClassProgression(classItem.classKey)?.resourceProgression?.slotLevel?.[classItem.level] || null : null;
@@ -86,7 +108,9 @@ function renderSpellcasting(character, spellcasting) {
         <dt>Ability</dt><dd>${spellcasting.ability}</dd>
         <dt>Save DC</dt><dd>${spellcasting.saveDc}</dd>
         <dt>Attack bonus</dt><dd>${signed(spellcasting.attackBonus)}</dd>
+        <dt>Ki Save DC</dt><dd>${spellcasting.kiSaveDc || "-"}</dd>
       </dl>
+      ${spellcasting.kiSaveDcNote ? `<p class="spell-meta">${spellcasting.kiSaveDcNote}</p>` : ""}
       <h3>Kouzla</h3>
       <div class="spell-grid">
         ${spells.map((spell) => `
@@ -321,6 +345,10 @@ function renderCharacter(character) {
         <h2>Skill checks</h2>
         <div class="skill-grid">${renderSkills(character)}</div>
       </article>
+      <article class="info-panel skill-panel">
+        <h2>Saving Throws</h2>
+        <div class="saving-throw-grid">${renderSavingThrows(character)}</div>
+      </article>
     </section>
 
     <section id="tab-1" class="tab-panel">
@@ -340,6 +368,8 @@ function renderCharacter(character) {
     <section id="tab-3" class="tab-panel">
       <h2>Výbava</h2>
       <div class="info-panel"><ul>${renderList(character.equipment)}</ul></div>
+      ${character.currency ? `<div class="info-panel currency-panel"><h2>Currency</h2><p><strong>${character.currency.gp} GP</strong></p></div>` : ""}
+      ${renderMagicalItems(character)}
     </section>
 
     <section id="tab-4" class="tab-panel">

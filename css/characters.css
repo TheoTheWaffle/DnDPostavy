@@ -458,6 +458,66 @@ dd {
   border-radius: 50%;
 }
 
+.saving-throw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.45rem;
+}
+
+.save-row,
+.magic-item {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(213, 168, 77, 0.16);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.save-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.2rem 0.6rem;
+}
+
+.save-row strong {
+  color: var(--gold);
+}
+
+.save-row em {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: normal;
+}
+
+.save-row.proficient {
+  border-color: var(--accent-soft);
+}
+
+.currency-panel,
+.magical-items-panel {
+  margin-top: 1rem;
+}
+
+.currency-panel p {
+  color: var(--gold);
+  font-size: 1.4rem;
+}
+
+.magic-item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.65rem;
+}
+
+.magic-item h3 {
+  margin: 0 0 0.25rem;
+  color: var(--gold);
+}
+
+.magic-item p {
+  margin: 0;
+}
+
 .skill-row.proficient .skill-dot {
   background: var(--gold);
   box-shadow: 0 0 0 3px rgba(213, 168, 77, 0.14);

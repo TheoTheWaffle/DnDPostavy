@@ -143,14 +143,22 @@ window.characters = {
     languages: ["Common"],
     proficiencies: ["Navigator's Tools", "Vehicles (water)", "Simple Weapons", "Shortswords", "Monk Weapons", "Improvised Weapons", "Pact Weapon"],
     skillProficiencies: ["acrobatics", "athletics", "performance"],
+    savingThrows: [
+      { name: "Strength", bonus: 4, proficient: true },
+      { name: "Dexterity", bonus: 7, proficient: true },
+      { name: "Constitution", bonus: 2, proficient: false },
+      { name: "Intelligence", bonus: 0, proficient: false },
+      { name: "Wisdom", bonus: 2, proficient: false },
+      { name: "Charisma", bonus: 2, proficient: false }
+    ],
     attacks: [
       { name: "Rapír +2", ability: "dexterity", proficient: true, magicBonus: 2, damageDice: "1d8", damageType: "piercing", range: "Melee", notes: "Finesse weapon; using Dexterity" },
       { name: "Fist", ability: "dexterity", proficient: true, magicBonus: 0, damageDice: "1d8", damageType: "bludgeoning", range: "Melee", notes: "Martial Arts; using Dexterity" },
-      { name: "Bambitka / pistol", ability: "dexterity", proficient: true, magicBonus: 0, damageDice: "1d8", damageType: "piercing", range: "Ranged", notes: "Ranged weapon; using Dexterity" },
+      { name: "Pistol +1", ability: "dexterity", proficient: true, magicBonus: 1, damageDice: "1d8", damageType: "piercing", range: "Ranged", notes: "Ranged weapon; using Dexterity" },
       { name: "Eldritch Blast", ability: "charisma", proficient: true, magicBonus: 0, damageDice: "1d10", damageType: "force", range: "300 ft", damageAbility: "charisma", notes: "Agonizing Blast, Eldritch Spear" },
     ],
     resources: [
-      { name: "Ki", current: 7, maximum: 7, recharge: "Short Rest", note: "Monk techniques" },
+      { name: "Ki", current: 6, maximum: 6, recharge: "Short Rest", note: "Monk techniques" },
       { name: "Warlock Spell Slots", current: 2, maximum: 2, recharge: "Short Rest", note: "2nd-level slots" }
     ],
     spellcasting: {
@@ -158,6 +166,8 @@ window.characters = {
       ability: "Charisma",
       saveDc: 14,
       attackBonus: 6,
+      kiSaveDc: 16,
+      kiSaveDcNote: "Dragonhide Belt +2 increases Ki feature save DC from 14 to 16.",
       spells: [
         { name: "Eldritch Blast", level: "Cantrip", type: "Attack spell", range: "300 ft", duration: "Instantaneous", description: "You fire a beam of crackling magical energy. On a hit, it deals 1d10 force damage; Agonizing Blast adds your Charisma modifier to the damage.", higherLevels: "At character level 5 you fire 2 beams, 3 at level 11, and 4 at level 17. Make a separate attack roll for each beam." },
         { name: "Prestidigitation", level: "Cantrip", type: "Utility spell", range: "10 ft", duration: "Up to 1 hour", description: "You perform a minor magical trick, such as creating a harmless sensory effect, lighting or snuffing a small flame, cleaning an object, or marking a surface." },
@@ -169,7 +179,16 @@ window.characters = {
         { name: "Shatter", level: "2nd-level", type: "Action", range: "60 ft", duration: "Instantaneous", description: "A painfully loud ringing sound erupts at a point within range. Creatures in a 10-foot-radius sphere make a Constitution save; on a failure they take 3d8 thunder damage, or half on a success.", higherLevels: "The damage increases by 1d8 for each slot level above 2nd." }
       ]
     },
-    equipment: ["Pirátské kalhoty", "Viol", "Rapír", "2x Citron", "2x Pomeranč", "Karty", "Louč", "Boots of Speed", "Bambitka", "Tráva marihuana hodně", "Spory na houbičky halucinogenní", "4x Minor Healing Potions (2d4 + 2)", "Amulet pohody", "1000 GP"],
+    equipment: ["Pirate pants", "Violin", "Rapier +2", "2x Lemon", "2x Orange", "Playing cards", "Torch", "Boots of Speed", "Pistol +1", "A large amount of marijuana", "Hallucinogenic mushroom spores", "3x Minor Healing Potions (2d4 + 2)", "Amulet of Fire Absorption (-2 fire damage)", "Bottle of Rum", "Bottle of expensive alcohol (330 GP)", "Color-changing Coat +1", "Oozeling vial", "10 Kika pouches (2500)", "Kika recipe in Kalamutian"],
+    magicalItems: [
+      { name: "Dragonhide Belt +2", effect: "+2 to Ki feature save DCs; once per day, use an action to regain Ki equal to one Martial Arts die (1d6), up to your maximum of 6." },
+      { name: "Boots of Speed", effect: "Double your movement speed for 10 rounds when activated as a bonus action." },
+      { name: "Rapier +2", effect: "+2 magical rapier." },
+      { name: "Pistol +1", effect: "+1 magical pistol." },
+      { name: "Amulet of Fire Absorption", effect: "Reduce incoming fire damage by 2." },
+      { name: "Color-changing Coat +1", effect: "A magical coat that can change colors." }
+    ],
+    currency: { gp: 414 },
     invocations: ["Agonizing Blast", "Eldritch Spear"],
     features: [
       {
