@@ -12,30 +12,59 @@
   --accent-soft: rgba(213, 168, 77, 0.25);
 }
 
-body[data-theme="tide"] {
-  --ink: #e1f3f1;
-  --muted: #a6c8c5;
-  --bg: #0e2024;
-  --panel: #163338;
-  --panel-2: #1d4549;
-  --line: #39747a;
-  --gold: #70d0c2;
-  --red: #b45c62;
-  --green: #5f9d82;
-  --accent-soft: rgba(112, 208, 194, 0.24);
+body.joli-theme {
+  --ink: #d9f4f0;
+  --muted: #8ebbb9;
+  --bg: #07151b;
+  --panel: #0d2931;
+  --panel-2: #123c45;
+  --line: #1f6870;
+  --gold: #69d0c2;
+  --red: #8d4d67;
+  --green: #3c8b7e;
+  --accent-soft: rgba(105, 208, 194, 0.28);
+  background:
+    radial-gradient(ellipse at 78% 5%, rgba(36, 126, 139, 0.3), transparent 28rem),
+    radial-gradient(ellipse at 12% 88%, rgba(20, 70, 94, 0.34), transparent 34rem),
+    repeating-radial-gradient(ellipse at 35% 15%, transparent 0 20px, rgba(105, 208, 194, 0.08) 21px 22px, transparent 23px 48px),
+    linear-gradient(115deg, #06141b, #0b303a 52%, #041017);
 }
 
-body[data-theme="moss"] {
-  --ink: #edf1d7;
-  --muted: #bdc69b;
-  --bg: #182019;
-  --panel: #263025;
-  --panel-2: #34402e;
-  --line: #66764b;
-  --gold: #d5c66c;
-  --red: #a55e45;
-  --green: #7eaa68;
-  --accent-soft: rgba(213, 198, 108, 0.24);
+body.joli-theme::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.18;
+  background: linear-gradient(105deg, transparent 0 38%, rgba(142, 232, 222, 0.1) 45%, transparent 54%), linear-gradient(75deg, transparent 0 58%, rgba(87, 193, 208, 0.08) 65%, transparent 73%);
+}
+
+body.berengar-theme {
+  --ink: #f6e6c3;
+  --muted: #c4a878;
+  --bg: #1b100c;
+  --panel: #2d1b13;
+  --panel-2: #412619;
+  --line: #81552b;
+  --gold: #e5b957;
+  --red: #9b3d2e;
+  --green: #55704b;
+  --accent-soft: rgba(229, 185, 87, 0.3);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(238, 171, 67, 0.2), transparent 22rem),
+    linear-gradient(90deg, rgba(93, 43, 21, 0.26) 0 2px, transparent 2px 92px),
+    linear-gradient(180deg, #3a2115, #1a0e0a 72%);
+}
+
+body.berengar-theme::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.2;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 216, 125, 0.45), transparent 24rem);
 }
 
 * {
@@ -96,22 +125,6 @@ img {
   text-decoration: none;
 }
 
-.theme-picker {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.theme-picker select {
-  color: var(--ink);
-  background: var(--panel-2);
-  border: 1px solid var(--accent-soft);
-  border-radius: 999px;
-  padding: 0.35rem 0.55rem;
-  font: inherit;
-}
 
 .home-hero {
   min-height: 52vh;

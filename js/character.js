@@ -261,6 +261,9 @@ function bindTabs(character) {
 function renderCharacter(character) {
   if (!detailRoot || !character) return;
   document.title = `${character.name} | DnD Postavy`;
+  document.body.dataset.character = character.id;
+  document.body.classList.toggle("joli-theme", character.id === "joli");
+  document.body.classList.toggle("berengar-theme", character.id === "berengar");
   detailRoot.innerHTML = `
     <section class="profile-hero">
       <img class="profile-portrait" src="${character.portrait}" alt="Portrét postavy ${character.name}">

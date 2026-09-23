@@ -21,10 +21,11 @@ window.characters = {
     skillProficiencies: ["athletics", "insight", "intimidation", "persuasion"],
     attacks: [
       { name: "Maul", ability: "strength", proficient: true, magicBonus: 0, damageDice: "2d6", damageType: "bludgeoning", range: "Melee", notes: "Heavy, two-handed" },
+      { name: "Longbow", ability: "dexterity", proficient: true, magicBonus: 0, damageDice: "1d8", damageType: "piercing", range: "150/600 ft", notes: "Ammunition, heavy, two-handed" },
       { name: "Handaxe", ability: "strength", proficient: true, magicBonus: 0, damageDice: "1d6", damageType: "slashing", range: "Melee or 20/60 ft", notes: "Light, thrown" }
     ],
     resources: [
-      { name: "Rage", current: 3, maximum: 3, recharge: "Long Rest", note: "+2 damage" }
+      { name: "Rage", current: 2, maximum: 3, recharge: "Long Rest", note: "+2 damage" }
     ],
     equipment: ["Maul", "Longbow", "Brewer's Tools", "Traveler's clothes", "Merchant gear"],
     features: [
@@ -44,7 +45,7 @@ window.characters = {
         source: "Barbarian 1",
         levelUnlocked: 1,
         actionType: "Bonus Action",
-        uses: "3 / Long Rest",
+        uses: "2 / Long Rest",
         recharge: "Long Rest",
         shortDescription: "Vstoupíš do bojového vzteku.",
         details: ["Rage aktivuješ jako bonus action, pokud nejsi v heavy armor.", "Výhoda na Strength checks a Strength saves.", "+2 damage k melee útokům používajícím Strength.", "Resistance proti bludgeoning, piercing a slashing damage.", "Trvá 1 minutu; skončí dřív, pokud upadneš do bezvědomí nebo v tahu nezaútočíš na nepřítele a neutrpíš damage.", "Během Rage nemůžeš kouzlit ani držet koncentraci."],
