@@ -44,8 +44,40 @@ function renderResources(resources) {
   `).join("");
 }
 
-function renderSpellcasting(spellcasting) {
+function spellSlotLevel(character, spellcasting) {
+  const classItem = character.classes?.find((item) => item.className === spellcasting.className);
+  return classItem ? getClassProgression(classItem.classKey)?.resourceProgression?.slotLevel?.[classItem.level] || null : null;
+}
+
+function spellScalingText(character, spellcasting, spell) {
+  const characterLevel = totalCharacterLevel(character);
+  if (spell.name === "Firebolt") {
+    const dice = characterLevel >= 17 ? 4 : characterLevel >= 11 ? 3 : characterLevel >= 5 ? 2 : 1;
+    return `At your character level (${characterLevel}), it deals ${dice}d10 fire damage.`;
+  }
+  if (spell.name === "Eldritch Blast") {
+    const beams = characterLevel >= 17 ? 4 : characterLevel >= 11 ? 3 : characterLevel >= 5 ? 2 : 1;
+    return `At your character level (${characterLevel}), you fire ${beams} beam${beams === 1 ? "" : "s"}; make a separate attack roll for each.`;
+  }
+
+  const slotLevel = spellSlotLevel(character, spellcasting);
+  if (!slotLevel) return spell.higherLevels || "";
+  if (spell.name === "Thunderwave") {
+    return `With your ${slotLevel}${slotLevel === 1 ? "st" : slotLevel === 2 ? "nd" : slotLevel === 3 ? "rd" : "th"}-level spell slot, it deals ${2 + Math.max(0, slotLevel - 1)}d8 thunder damage.`;
+  }
+  if (spell.name === "Shatter") {
+    return `With your ${slotLevel}${slotLevel === 1 ? "st" : slotLevel === 2 ? "nd" : slotLevel === 3 ? "rd" : "th"}-level spell slot, it deals ${3 + Math.max(0, slotLevel - 2)}d8 thunder damage.`;
+  }
+  if (spell.name === "Invisibility") {
+    const targets = 1 + Math.max(0, slotLevel - 2);
+    return `With your ${slotLevel}${slotLevel === 1 ? "st" : slotLevel === 2 ? "nd" : slotLevel === 3 ? "rd" : "th"}-level spell slot, you can target ${targets} creature${targets === 1 ? "" : "s"}.`;
+  }
+  return spell.higherLevels || "";
+}
+
+function renderSpellcasting(character, spellcasting) {
   if (!spellcasting) return "";
+  const spells = (spellcasting.spells || []).map((spell) => typeof spell === "string" ? { name: spell } : spell);
   return `
     <article class="info-panel spell-panel">
       <h2>Kouzlení</h2>
@@ -55,8 +87,21 @@ function renderSpellcasting(spellcasting) {
         <dt>Save DC</dt><dd>${spellcasting.saveDc}</dd>
         <dt>Attack bonus</dt><dd>${signed(spellcasting.attackBonus)}</dd>
       </dl>
-      <h3>Spells</h3>
-      <ul>${renderList(spellcasting.spells)}</ul>
+      <h3>Kouzla</h3>
+      <div class="spell-grid">
+        ${spells.map((spell) => `
+          <article class="spell-card">
+            <div class="spell-heading">
+              <h4>${spell.name}</h4>
+              <span>${spell.level || "Kouzlo"}</span>
+            </div>
+            ${spell.type ? `<p class="spell-meta">${spell.type}</p>` : ""}
+            ${spell.description ? `<p>${spell.description}</p>` : ""}
+            ${spellScalingText(character, spellcasting, spell) ? `<p class="spell-scaling"><strong>Current scaling:</strong> ${spellScalingText(character, spellcasting, spell)}</p>` : ""}
+            ${(spell.range || spell.duration) ? `<dl class="spell-details">${spell.range ? `<dt>Dosah</dt><dd>${spell.range}</dd>` : ""}${spell.duration ? `<dt>Trvání</dt><dd>${spell.duration}</dd>` : ""}</dl>` : ""}
+          </article>
+        `).join("")}
+      </div>
     </article>
   `;
 }
@@ -280,7 +325,7 @@ function renderCharacter(character) {
       <div class="attack-grid">${renderAttacks(character, character.attacks || [])}</div>
       <h2>Zdroje</h2>
       <div class="resource-grid">${renderResources(character.resources || [])}</div>
-      ${renderSpellcasting(character.spellcasting)}
+      ${renderSpellcasting(character, character.spellcasting)}
       ${renderCombatWildSurge(character)}
     </section>
 

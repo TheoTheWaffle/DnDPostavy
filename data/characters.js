@@ -7,8 +7,8 @@ window.characters = {
     alignment: "Good",
     portrait: "../assets/characters/Berengar.png",
     cardPortrait: "./assets/characters/Berengar.png",
-    description: "Trpasličí hostinský, který většinu problémů řeší velkým kladivem a ještě větší tvrdohlavostí.",
-    flavorQuote: "Trpasličí taverník, který dává přednost řešení problémů palicí.",
+    description: "Trpasličí hostinský a obchodník, který chrání svou rodinu, hospodu i družinu velkým kladivem a ještě větší tvrdohlavostí.",
+    flavorQuote: "Když nepomůže domluva, pomůže kladivo. Když nepomůže kladivo, bylo moc malé.",
     classes: [{ classKey: "barbarian", className: "Barbarian", level: 3, subclass: "wildMagic" }],
     stats: { strength: 14, dexterity: 14, constitution: 19, intelligence: 9, wisdom: 10, charisma: 12 },
     hp: 49,
@@ -126,15 +126,15 @@ window.characters = {
     alignment: "Good",
     portrait: "../assets/characters/joli.png",
     cardPortrait: "./assets/characters/joli.png",
-    description: "Pirátka a mistryně opileckého stylu, která pluje z přístavu do přístavu za příběhy, vínem a nečekanými souboji.",
-    flavorQuote: "I enjoy sailing into new ports and making new friends over a flagon of ale.",
+    description: "A pirate, monk, and warlock's chosen champion who sails from port to port in search of stories, wine, and unexpected fights.",
+    flavorQuote: "Every new port hides a story, a friend, and sometimes a fight worth having.",
     classes: [
       { classKey: "monk", className: "Monk", level: 6, subclass: "drunkenMaster" },
-      { classKey: "warlock", className: "Warlock", level: 3, subclass: "fathomless" }
+      { classKey: "warlock", className: "Warlock", level: 4, subclass: "fathomless" }
     ],
     pact: "Pact of the Blade",
     stats: { strength: 10, dexterity: 16, constitution: 14, intelligence: 11, wisdom: 15, charisma: 15 },
-    hp: 58,
+    hp: 66,
     ac: 16,
     initiative: 4,
     speed: "45 ft",
@@ -147,10 +147,9 @@ window.characters = {
       { name: "Fist", ability: "dexterity", proficient: true, magicBonus: 0, damageDice: "1d8", damageType: "bludgeoning", range: "Melee", notes: "Martial Arts; using Dexterity" },
       { name: "Bambitka / pistol", ability: "dexterity", proficient: true, magicBonus: 0, damageDice: "1d8", damageType: "piercing", range: "Ranged", notes: "Ranged weapon; using Dexterity" },
       { name: "Eldritch Blast", ability: "charisma", proficient: true, magicBonus: 0, damageDice: "1d10", damageType: "force", range: "300 ft", damageAbility: "charisma", notes: "Agonizing Blast, Eldritch Spear" },
-      { name: "Firebolt", ability: "charisma", proficient: true, magicBonus: 0, damageDice: "1d10", damageType: "fire", range: "120 ft", addAbilityToDamage: false, notes: "Warlock spell attack" }
     ],
     resources: [
-      { name: "Ki", current: 6, maximum: 6, recharge: "Short Rest", note: "Monk techniques" },
+      { name: "Ki", current: 7, maximum: 7, recharge: "Short Rest", note: "Monk techniques" },
       { name: "Warlock Spell Slots", current: 2, maximum: 2, recharge: "Short Rest", note: "2nd-level slots" }
     ],
     spellcasting: {
@@ -158,7 +157,16 @@ window.characters = {
       ability: "Charisma",
       saveDc: 14,
       attackBonus: 6,
-      spells: ["Eldritch Blast", "Firebolt"]
+      spells: [
+        { name: "Eldritch Blast", level: "Cantrip", type: "Attack spell", range: "300 ft", duration: "Instantaneous", description: "You fire a beam of crackling magical energy. On a hit, it deals 1d10 force damage; Agonizing Blast adds your Charisma modifier to the damage.", higherLevels: "At character level 5 you fire 2 beams, 3 at level 11, and 4 at level 17. Make a separate attack roll for each beam." },
+        { name: "Prestidigitation", level: "Cantrip", type: "Utility spell", range: "10 ft", duration: "Up to 1 hour", description: "You perform a minor magical trick, such as creating a harmless sensory effect, lighting or snuffing a small flame, cleaning an object, or marking a surface." },
+        { name: "Mage Hand", level: "Cantrip", type: "Utility spell", range: "30 ft", duration: "1 minute", description: "A spectral hand appears at a point you choose. You can manipulate objects, open an unlocked container, retrieve or stow an item, or pour out the contents of a vial." },
+        { name: "Thunderwave", level: "1st-level", type: "Action", range: "Self (15 ft cube)", duration: "Instantaneous", description: "A wave of thunderous force affects creatures in the cube. On a failed Constitution save, a creature takes 2d8 thunder damage and is pushed 10 ft; on a success, it takes half damage.", higherLevels: "The damage increases by 1d8 for each slot level above 1st." },
+        { name: "Invisibility", level: "2nd-level", type: "Action · concentration", range: "Touch", duration: "Up to 1 hour", description: "A creature you touch becomes invisible. The spell ends for a target when it attacks or casts a spell.", higherLevels: "You can target one additional creature for each slot level above 2nd." },
+        { name: "Suggestion", level: "2nd-level", type: "Action · concentration", range: "30 ft", duration: "Up to 8 hours", description: "You suggest a reasonable course of activity to a creature that can hear and understand you. On a failed Wisdom save, it follows the suggestion until it is completed or the spell ends." },
+        { name: "Armor of Agathys", level: "1st-level", type: "Action", range: "Self", duration: "1 hour", description: "A protective magical force surrounds you. You gain 5 temporary hit points. If a creature hits you with a melee attack while these hit points remain, it takes 5 cold damage." },
+        { name: "Shatter", level: "2nd-level", type: "Action", range: "60 ft", duration: "Instantaneous", description: "A painfully loud ringing sound erupts at a point within range. Creatures in a 10-foot-radius sphere make a Constitution save; on a failure they take 3d8 thunder damage, or half on a success.", higherLevels: "The damage increases by 1d8 for each slot level above 2nd." }
+      ]
     },
     equipment: ["Pirátské kalhoty", "Viol", "Rapír", "2x Citron", "2x Pomeranč", "Karty", "Louč", "Boots of Speed", "Bambitka", "Tráva marihuana hodně", "Spory na houbičky halucinogenní", "4x Minor Healing Potions (2d4 + 2)", "Amulet pohody", "1000 GP"],
     invocations: ["Agonizing Blast", "Eldritch Spear"],
@@ -276,6 +284,15 @@ window.characters = {
         shortDescription: "Opilecký pohyb obrací chyby a rány proti okolí.",
         details: ["Obsahuje Leap to Your Feet a Redirect Attack ve stručné podobě pro hru.", "Pomáhá rychle vstát a přesměrovat neúspěšný melee útok."],
         tags: ["subclass", "defense"]
+      },
+      {
+        name: "Ability Score Improvement",
+        source: "Warlock 4",
+        levelUnlocked: 4,
+        actionType: "Passive",
+        shortDescription: "You improve one ability score or choose a feat.",
+        details: ["Increase one ability score by 2, two ability scores by 1, or choose a feat, following the normal rules."],
+        tags: ["warlock", "progression"]
       },
       {
         name: "Tentacle of the Deep",

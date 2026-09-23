@@ -56,4 +56,4 @@ Total level se počítá automaticky jako součet všech class levelů.
 
 ## Poznámky k datům
 
-Pravidla jsou stručně shrnutá vlastními slovy pro D&D 5e 2014. Joliho základní údaje jsou doplněné podle `Joli.pdf` a ruční opravy, že aktuální build je Monk 6 / Warlock 3.
+Pravidla jsou stručně shrnutá vlastními slovy pro D&D 5e 2014. Joliho základní údaje jsou doplněné podle `Joli_Level10_DnD_Character_Sheet.pdf`; aktuální build je Monk 6 / Warlock 4.
